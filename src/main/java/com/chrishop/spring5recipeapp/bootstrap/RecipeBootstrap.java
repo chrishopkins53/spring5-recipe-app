@@ -1,6 +1,5 @@
 package com.chrishop.spring5recipeapp.bootstrap;
 
-
 import com.chrishop.spring5recipeapp.domain.*;
 import com.chrishop.spring5recipeapp.repositories.CategoryRepository;
 import com.chrishop.spring5recipeapp.repositories.RecipeRepository;
@@ -9,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,6 +30,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
