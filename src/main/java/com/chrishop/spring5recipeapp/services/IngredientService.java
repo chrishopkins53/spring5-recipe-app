@@ -1,0 +1,8 @@
+package com.chrishop.spring5recipeapp.services;
+
+import com.chrishop.spring5recipeapp.commands.IngredientCommand;
+
+public interface IngredientService {
+
+    IngredientCommand findByRecipeIdAndIngredientId(Long recipeId, Long ingredients);
+}
